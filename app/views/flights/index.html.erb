@@ -6,8 +6,17 @@
 <%= form.label :query, "To:" %>
     <%= select_tag(:arrival_airport_id, options_for_select(@airports)) %> 
     <%= form.label :query, "Date:" %>
-    <%= select_tag(:departure_date, options_for_select(@flights)) %>
+    <%= select_tag :departure_date,
+      options_for_select(@departure_dates),
+      include_blank: "Any date" %>
+    <%= form.label :query, "Passengers:" %>
+    <%= select_tag(:num_tickets, options_for_select([1,2,3,4])) %>
   <br>
   <br>
   <%= form.submit "Search" %>
+  <br>
+  <br>
+  <% @flight_search_results.each do |flight| %>
+      <%= render flight %>
+  <% end %>
 <% end %>
