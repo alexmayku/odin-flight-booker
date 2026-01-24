@@ -1,0 +1,22 @@
+<h1>New Booking</h1>
+
+<%= form_with(model: @booking) do |form| %>
+    <%= form.fields_for :passengers do |passenger_form| %>   
+        <div>
+            <%= passenger_form.label :name %>
+            <%= passenger_form.text_field :name %>
+        </div>
+        <div>
+            <%= passenger_form.label :email %>
+            <%= passenger_form.text_field :email %>
+        </div>
+      <br>
+    <% end %>
+    <%= form.hidden_field :flight_id %>
+        <br>
+        <br>
+
+
+<%= form.submit "Create booking" %>  
+
+<%end%>

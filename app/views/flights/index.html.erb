@@ -14,9 +14,16 @@
   <br>
   <br>
   <%= form.submit "Search" %>
-  <br>
-  <br>
-  <% @flight_search_results.each do |flight| %>
-      <%= render flight %>
-  <% end %>
 <% end %>
+  <br>
+  <br>
+<% if @flight_search_results%>
+  <%= form_with url: new_booking_path, method: :get do |form| %>
+  <%= form.hidden_field :num_tickets, value: params[:num_tickets] %>
+  <%= form.collection_radio_buttons :flight_id, @flight_search_results, :id, :description, { required: true } %>
+  <%= form.submit "Select flight" %>  
+  <%end%>
+    
+
+<% end %>
+
