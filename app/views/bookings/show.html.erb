@@ -1,3 +1,11 @@
 <h1>My Booking</h1>
 
-<%="You are confirmed to fly on #{@booking.flight.departure_date}"%>
+<%="You are confirmed to fly from #{@booking.flight.departure_airport[:name]} to #{@booking.flight.arrival_airport[:name]} on #{@booking.flight.departure_date}"%>
+
+<h2>Passengers on this booking</h2>
+
+<ul>
+<% @booking.passengers.each do |passenger|%>
+  <li><%= passenger.name %></li>
+<%end%>
+</ul>
