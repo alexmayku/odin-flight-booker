@@ -1,11 +1,50 @@
-<h1>My Booking</h1>
+<div class="max-w-2xl mx-auto">
+  <!-- Confirmation Header -->
+  <div class="bg-gradient-to-r from-green-500 to-blue-600 rounded-lg shadow-lg p-8 text-white mb-8">
+    <div class="flex items-center mb-4">
+      <span class="text-4xl mr-3">✓</span>
+      <h1 class="text-4xl font-bold">Booking Confirmed</h1>
+    </div>
+    <p class="text-lg opacity-90">Your flight reservation is confirmed and ready to go!</p>
+  </div>
 
-<%="You are confirmed to fly from #{@booking.flight.departure_airport[:name]} to #{@booking.flight.arrival_airport[:name]} on #{@booking.flight.departure_date}"%>
+  <!-- Flight Details -->
+  <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Flight Details</h2>
+    <div class="border-b border-gray-200 pb-6">
+      <div class="flex justify-between items-center">
+        <div>
+          <p class="text-gray-600 text-sm mb-1">From</p>
+          <p class="text-2xl font-bold text-gray-900"><%= @booking.flight.departure_airport[:name] %></p>
+        </div>
+        <div class="text-3xl text-gray-400">→</div>
+        <div>
+          <p class="text-gray-600 text-sm mb-1">To</p>
+          <p class="text-2xl font-bold text-gray-900"><%= @booking.flight.arrival_airport[:name] %></p>
+        </div>
+      </div>
+      <p class="text-gray-600 mt-4 text-lg">📅 <%= @booking.flight.departure_date.strftime('%A, %B %d, %Y') %></p>
+    </div>
+  </div>
 
-<h2>Passengers on this booking</h2>
+  <!-- Passengers -->
+  <div class="bg-white rounded-lg shadow-md p-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Passengers</h2>
+    <div class="space-y-3">
+      <% @booking.passengers.each_with_index do |passenger, index| %>
+        <div class="flex items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+          <span class="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-semibold text-sm mr-4"><%= index + 1 %></span>
+          <div>
+            <p class="font-semibold text-gray-900"><%= passenger.name %></p>
+            <p class="text-gray-600 text-sm"><%= passenger.email %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<ul>
-<% @booking.passengers.each do |passenger|%>
-  <li><%= passenger.name %></li>
-<%end%>
-</ul>
+  <!-- Action Button -->
+  <div class="mt-8">
+    <%= link_to "Book Another Flight", root_path, class: "block text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200" %>
+  </div>
+</div>

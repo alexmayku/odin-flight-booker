@@ -18,12 +18,31 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <%# Tailwind CSS %>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-gray-50">
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="flex justify-between items-center">
+          <%= link_to "✈️ Flight Booker", root_path, class: "text-2xl font-bold text-blue-600 hover:text-blue-700" %>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <%= yield %>
+    </main>
+
+    <footer class="bg-white border-t border-gray-200 mt-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500 text-sm">
+        <p>&copy; 2026 Flight Booker. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>

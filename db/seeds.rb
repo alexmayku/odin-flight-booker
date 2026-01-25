@@ -27,22 +27,25 @@ lhr = Airport.find_by!(code: "LHR")
 jfk = Airport.find_by!(code: "JFK")
 lgw = Airport.find_by!(code: "LGW")
 
-# Define an array of flight data, specifying departure and arrival airports
+# Define an array of flight data, specifying departure and arrival airports, and prices
 flights = [
   {
     departure_airport: lhr,
     arrival_airport: jfk,
-    departure_date: "2026-01-21"
+    departure_date: "2026-01-21",
+    price: 599
   },
   {
     departure_airport: jfk,
     arrival_airport: lhr,
-    departure_date: "2026-01-22"
+    departure_date: "2026-01-22",
+    price: 625
   },
   {
     departure_airport: lgw,
     arrival_airport: jfk,
-    departure_date: "2026-01-23"
+    departure_date: "2026-01-23",
+    price: 549
   }
 ]
 
